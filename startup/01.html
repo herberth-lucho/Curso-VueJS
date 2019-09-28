@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hola mundo con vue</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="app" class="container mt-5">
+      <h1>{{ titulo }}</h1>
+
+      <input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta" />
+      <button @click="agregarFruta">Agregar</button>
+
+      <ul>
+        <li v-for="fruta of frutas">
+          <input type="number" v-model.number="fruta.cantidad" />
+          {{ fruta.nombre }}
+          <button @click="fruta.cantidad++">+</button>
+          <span v-if="fruta.cantidad === 0">- Sin Stock</span>
+        </li>
+      </ul>
+      <h4>Total: {{ sumarFrutas }}</h4>
+
+      <div :class="['p-3', 'text-white', fondo]">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi et
+          laborum consectetur, fugit quas nisi quo dolor fuga repellendus
+          voluptatem. Commodi repudiandae dolorum dolore laudantium eaque
+          corporis assumenda at corrupti.
+        </p>
+      </div>
+      <input type="text" class="form-control my-3" v-model="fondo" />
+
+      <div class="p-3 text-white" :class="{'bg-info' : color, 'bg-success' : !color}">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi et
+          laborum consectetur, fugit quas nisi quo dolor fuga repellendus
+          voluptatem. Commodi repudiandae dolorum dolore laudantium eaque
+          corporis assumenda at corrupti.
+        </p>
+      </div>
+
+      <button class="btn btn-primary" @click="color = !color">Cambiar</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="01.js"></script>
+  </body>
+</html>
